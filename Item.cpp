@@ -7,7 +7,7 @@
 #include <bits/unique_ptr.h>
 #include "Dice.h"
 #include "Hero.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 Item::Item(){
     Dice a;
@@ -89,4 +89,15 @@ const std::string &Item::getSecondName() const {
 
 void Item::setSecondName(const std::string &secondName) {
     Item::secondName = secondName;
+}
+
+
+Item Item::getElementNull() {
+    Item a;
+    a.Type=0;
+    a.secondName="";
+    a.firstName="";
+    a.actived=false;
+    a.strenght=0;
+    return a;
 }

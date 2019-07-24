@@ -8,19 +8,13 @@
 
 #include "Hero.h"
 #include "Warrior.h"
-#include "inventory.h"
+#include "Inventory.h"
 
 class Warrior : public Hero {
 public:
-    inventory Inventory;
 
-    ~Warrior();
 
-    bool openChest();
 
-    Warrior();
-
-private:
 
 
 };

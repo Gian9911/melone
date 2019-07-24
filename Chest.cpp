@@ -5,7 +5,7 @@
 #include "Chest.h"
 #include "Item.h"
 #include <memory>
-#include "inventory.h"
+#include "Inventory.h"
 
 
 

@@ -8,9 +8,6 @@
 
 class Hero: public Character {
 public:
-    Item item;
-    Hero();
-    ~Hero();
     //mettere choise in game o main?
 
     bool openChest();
@@ -18,7 +15,7 @@ public:
     bool death();
 
 private:
-    //weapon
+    Inventory inventory;
 
 
 

@@ -8,7 +8,7 @@
 
 //#include "Weapon.h"
 #include<SFML/Graphics.hpp>
-#include "inventory.h"
+#include "Inventory.h"
 
 class Character {
 public:

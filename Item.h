@@ -5,7 +5,7 @@
 #ifndef ZZ_ITEM_H
 #define ZZ_ITEM_H
 
-
+#include <iostream>
 #include <string>
 
 class Item {
@@ -41,6 +41,11 @@ public:
     const std::string &getSecondName() const;
 
     void setSecondName(const std::string &secondName);
+
+    Item getElementNull();
+
+
+
 
 private:
     int Type;

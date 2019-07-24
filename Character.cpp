@@ -8,7 +8,7 @@
 #include "Character.h"
 #include <ctime>
 #include <iostream>
-#include "inventory.h"
+#include "Inventory.h"
 
 
 
@@ -34,8 +34,8 @@ Character::~Character() = default;
 
 Character& Character:: operator=(const Character &other){
    if(this!= &other){
-       //if(inventory!=nullptr)
-       //delete inventory;
+       //if(Inventory!=nullptr)
+       //delete Inventory;
        HP=other.HP;
        posX=other.posX;
        posY=other.posY;
@@ -51,12 +51,7 @@ Character& Character:: operator=(const Character &other){
    }
 }
 
-
-
 //Character::Character(const Character&){}
-
-
-
 
 void Character::move(int x, int y) {
     posX += x;
@@ -76,14 +71,11 @@ bool Character::fight(Character &enemy) {// da sposare in hero
     bool success = false;
 
 
-    int hit = 1;
-   // if (weapon)
+
+   // if (sword|spell)
    //     hit = weapon->use();
 
-    int damage = 0;
-    if (hit > enemy.getLevel()) {
-        damage = enemy.receiveDamage(hit);
-    }
+ int damage=1;// todo damage è il valore calcolato con la spada
 
     if (damage) {
         cout << "You hit the enemy ! (HP: " << enemy.getHp() << " punti)" << endl;
@@ -158,8 +150,6 @@ int Character::move(){//dda aggiungere texture
 
     return (posX+posY);
 }
-
-
 
 
 //

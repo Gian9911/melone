@@ -7,11 +7,7 @@
 #include "Character.h"
 #include "Chest.h"
 
-
-Hero::Hero():Character() {
-}
-
-Hero::~Hero() =default;//{}TODO distruzione weapon?->avviene per mezzo di distruttore di Item...chiedere
+//{}TODO distruzione weapon?->avviene per mezzo di distruttore di Item...chiedere
 
 //TODO void interact
 
@@ -23,24 +19,25 @@ void Hero::Growth(int & reciveedexp) {
      int level=getLevel();
 
 //
-    if(b>=a){
+    if(b>=a) {
+        if (level < maxL)
+            level++;
+            //TODO se livello dispari aumenta potenza attk weapon
 
-        level++;
-        //TODO se livello dispari aumenta potenza attk weapon
-
-        if(level%2==0) {
-            int hp = getHp();
-            hp++;
-            setHp(hp);
-        }
-        //else ....
-        int c=a-b;
-        setLevel(level);
-        setExp(c);
+            if (level % 2 == 0) {
+                int hp = getHp();
+                hp++;
+                setHp(hp);
+            }
+            //else ....
+            int c = a - b;
+            setLevel(level);
+            setExp(c);
+        } else
+            setExp(b);
     }
-    else
-        setExp(b);
-}
+
+
 
 
 bool Hero::death() {

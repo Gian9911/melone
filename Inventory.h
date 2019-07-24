@@ -10,11 +10,11 @@
 #include <vector>
 
 
-class inventory {
+class Inventory {
 public:
 
-    inventory();
-    ~inventory();
+    Inventory();
+    ~Inventory();
     void GetElement(Item &a);
     void UseElement(int i);
     void eraseItem(int i);
@@ -22,7 +22,7 @@ public:
 
 
 private:
-    std::vector<Item> palletico;
+    std::vector<Item> vectorInv;
     int numSlot;
     bool empty;
 
