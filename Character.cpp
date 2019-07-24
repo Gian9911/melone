@@ -32,23 +32,24 @@ Character::Character() {
 
 Character::~Character() = default;
 
-Character& Character:: operator=(const Character &other){
-   if(this!= &other){
-       //if(Inventory!=nullptr)
-       //delete Inventory;
-       HP=other.HP;
-       posX=other.posX;
-       posY=other.posY;
-       critic=other.critic;
-       exp=other.exp;
-       MaxEsp=other.MaxEsp;
-       level=other.level;
-       MaxLevel=other.MaxLevel;
-       armor=other.armor;
-       //TODO crea un metodo privato che richiama sia operatore sia costruttotre copia SE NECESSARIO
-       return *this;
+Character& Character:: operator=(const Character &other) {
+    if (this != &other) {
+        //if(Inventory!=nullptr)
+        //delete Inventory;
+        HP = other.HP;
+        posX = other.posX;
+        posY = other.posY;
+        critic = other.critic;
+        exp = other.exp;
+        MaxEsp = other.MaxEsp;
+        level = other.level;
+        MaxLevel = other.MaxLevel;
+        armor = other.armor;
+        //TODO crea un metodo privato che richiama sia operatore sia costruttotre copia SE NECESSARIO
 
-   }
+
+    }
+    return *this;
 }
 
 //Character::Character(const Character&){}

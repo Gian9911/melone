@@ -47,6 +47,8 @@ public:
 
 
 
+
+
 private:
     int Type;
     int strenght;

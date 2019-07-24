@@ -10,13 +10,13 @@
 #include <vector>
 
 Inventory::Inventory() {
-
-
-
-
+    Item a;
+    a=a.getElementNull();
     empty=true;
     numSlot = 3;
     vectorInv.resize(numSlot);
+    for (int i=0;i<numSlot;i++)
+        vectorInv[i]=a;
 
 }
 Inventory::~Inventory()=default;
@@ -30,10 +30,6 @@ void  Inventory::GetElement(Item &a) {
             vectorInv[i]=a;
     }
 }
-
-
-
-
 
 void Inventory::UseElement(int i){
 
@@ -49,6 +45,15 @@ void Inventory::UseElement(int i){
 
 void Inventory::eraseItem(int i){
     Item a;
-    a.setType(0);
+    a.getElementNull();
      vectorInv[i]=a;
 }
+
+Item Inventory::showElement(int i){//TODO per riferimento?
+    Item a;
+    a= vectorInv[i];
+    return a;
+}
+
+
+

@@ -14,6 +14,7 @@ class Warrior : public Hero {
 public:
 
 
+void fight1(int i, Character &enemy);
 
 
 

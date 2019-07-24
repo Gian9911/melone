@@ -14,7 +14,7 @@ public:
     void Growth(int &mm);
     bool death();
 
-private:
+protected:
     Inventory inventory;
 
 

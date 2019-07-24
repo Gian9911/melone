@@ -16,24 +16,15 @@ public:
 
    Character();//sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
 
-
-
-
-    virtual ~Character()=0;
-
+    virtual ~Character();
 
     Character(const Character&);
     // TODO add assignment operator ?
     Character& operator=(const Character& other);
 
-    virtual void move(int x, int y)=0;
+    virtual void move(int x, int y);
 
     // TODO check...void move(int distance);
-
-
-
-
-
 
     virtual int getHp() const;
 
@@ -44,11 +35,11 @@ public:
    // void setWeapon(Weapon* weapon);
 
 
-    virtual bool fight(Character &enemy)=0;
+    virtual bool fight(Character &enemy);
 
-    virtual bool isLegalFight(const Character &enemy) const=0;
+    virtual bool isLegalFight(const Character &enemy) const;
 
-    virtual int receiveDamage(int points)=0;
+    virtual int receiveDamage(int points);
 
     virtual int getCritic() const;
 
@@ -66,7 +57,7 @@ public:
 
     virtual void setLevel(int level);
 
-    virtual int move()=0;
+    virtual int move();
 
     int getPosX() const;
 

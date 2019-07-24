@@ -29,12 +29,12 @@ std::string Item::give1Name() {
     if (Type % 3 == 0)
         firstName = "Spada";
 
-    if(Type%2==0)
-        firstName="Incantesimo";
+    if (Type % 2 == 0)
+        firstName = "Incantesimo";
 
-    if(Type%1==0)
-        firstName="Pozione";
-
+    if (Type % 1 == 0)
+        firstName = "Pozione";
+return firstName;
 }
 
 std::string Item::give2name() {
@@ -46,13 +46,13 @@ std::string Item::give2name() {
 
     if(Type%1==0)
         firstName="debole";
-
+return secondName;
 }
 
 
 bool Item::isActived() {//o nelle specifici file delle classi weapon spell e potion????
     actived=true;
-
+return actived;
 }
 
 int Item::getType() const {
@@ -101,3 +101,4 @@ Item Item::getElementNull() {
     a.strenght=0;
     return a;
 }
+

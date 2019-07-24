@@ -18,6 +18,8 @@ public:
     void GetElement(Item &a);
     void UseElement(int i);
     void eraseItem(int i);
+    Item showElement(int i);
+
 
 
 
