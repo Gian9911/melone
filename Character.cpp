@@ -67,7 +67,7 @@ void Character::move(int x, int y) {
 
 
 
-bool Character::fight(Character &enemy) {// da sposare in hero
+bool Character::fight(Character &enemy) {// da sposare in Fight
     isFighting=true;
     bool success = false;
 
@@ -89,7 +89,7 @@ bool Character::fight(Character &enemy) {// da sposare in hero
 
 
 
-int Character::receiveDamage(int points) {
+int Character::receiveDamage(int points) {//remove
     if (level > 4)
         points -= 3;
     else if (level > 2)
@@ -113,7 +113,7 @@ int Character::receiveDamage(int points) {
 
 
 
-bool Character::isLegalFight(const Character &enemy) const {
+bool Character::isLegalFight(const Character &enemy) const {//remove
     int maxDistance = 1;
     if ((abs(posX - enemy.posX) > maxDistance) || (abs(posY - enemy.posY) > maxDistance))
         return false;
