@@ -4,14 +4,7 @@
 
 #include "Spell.h"
 
-Spell::Spell(){
 
-
-    int Spell::calculateDamage() {
-
-    }
-
-}
 
 
 Spell::~Spell() =default;

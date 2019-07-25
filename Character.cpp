@@ -26,7 +26,7 @@ Character::Character() {
     MaxLevel = 20;
     MaxEsp=10;
     level=1;
-    isFighting=false;
+    fighting=false;
 
 }
 
@@ -68,7 +68,7 @@ void Character::move(int x, int y) {
 
 
 bool Character::fight(Character &enemy) {// da sposare in Fight
-    isFighting=true;
+    fighting=true;
     bool success = false;
 
 
@@ -222,9 +222,9 @@ void Character::setMaxLevel(int maxLevel) {
 }
 
 bool Character::isFighting() const {
-    return isFighting;
+    return fighting;
 }
 
 void Character::setIsFighting(bool isFighting) {
-    Character::isFighting = isFighting;
+    Character::fighting = isFighting;
 }

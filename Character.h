@@ -99,7 +99,7 @@ private:
     int MaxEsp;
     int level;
     int MaxLevel;
-    bool isFighting;
+    bool fighting;
 
 
 
