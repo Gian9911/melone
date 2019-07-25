@@ -220,3 +220,11 @@ int Character::getMaxLevel() const {
 void Character::setMaxLevel(int maxLevel) {
     MaxLevel = maxLevel;
 }
+
+bool Character::isFighting() const {
+    return isFighting;
+}
+
+void Character::setIsFighting(bool isFighting) {
+    Character::isFighting = isFighting;
+}

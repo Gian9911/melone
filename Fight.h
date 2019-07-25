@@ -16,12 +16,7 @@ public:
 
     virtual bool fighting(Character &hero, Character &enemy);
     virtual bool IsLegalFight(Character &hero, Character &enemy) const;
-    int receiveDamage(Character &hero, int points);
-
-private:
-    bool isFighting;
-
-
+    virtual int receiveDamage(Character &hero, int points);
 };
 
 

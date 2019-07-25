@@ -5,8 +5,10 @@
 #include "Fight.h"
 using namespace std;
 
+
 bool Fight::fighting(Character &hero, Character &enemy) {// da sposare in hero
-    isFighting=true;
+    hero.setIsFighting(true);
+    enemy.setIsFighting(true);
     bool success = false;
 
 
@@ -26,9 +28,12 @@ bool Fight::fighting(Character &hero, Character &enemy) {// da sposare in hero
 
 bool Fight::IsLegalFight(Character &hero, Character &enemy) const {
     int maxDistance = 1;
+    bool distanceIscorrect;
     if ((abs(hero.getPosX() - enemy.getPosX()) > maxDistance) || (abs(hero.getPosY() - enemy.getPosY()) > maxDistance))
-            return false;
-        return true;
+            distanceIscorrect= false;
+    else
+        distanceIscorrect=true;
+    return distanceIscorrect;
 }
 
 

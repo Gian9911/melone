@@ -71,6 +71,10 @@ public:
 
     void setMaxLevel(int maxLevel);
 
+    bool isFighting() const;
+
+    void setIsFighting(bool isFighting);
+
 
 
 

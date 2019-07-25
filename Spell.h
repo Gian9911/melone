@@ -10,17 +10,15 @@
 #include "Dice.h"
 
 
-class spell: public Item {
+class Spell: public Item {
 public:
-spell();
-~spell();
+Spell();
+~Spell();
 
-int CalculateDamage();
-void IsLegalFight();
+int calculateDamage();
 
 
-private:
-    std::unique_ptr<spell>attach;
+
 
 };
 
