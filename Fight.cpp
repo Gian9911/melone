@@ -6,27 +6,14 @@
 using namespace std;
 
 
-bool Fight::fighting(Character &hero, Character &enemy) {// da sposare in hero
-    hero.setIsFighting(true);
-    enemy.setIsFighting(true);
-    bool success = false;
-
-
-
-    // if (sword|spell)
-    //     hit = weapon->use();
-
-    int damage=1;// todo damage è il valore calcolato con la spada
-
-    if (damage) {
-        cout << "You hit the enemy ! (HP: " << enemy.getHp() << " punti)" << endl;
-        success = true;
-    } else
-        cout << "You miss the hit..." << endl;
-    return success;
+int Fight::fighting(Item &a) {
+    int points=0;
+    return points;
 }
 
 bool Fight::IsLegalFight(Character &hero, Character &enemy) const {
+    hero.setIsFighting(true);
+    enemy.setIsFighting(true);
     int maxDistance = 1;
     bool distanceIscorrect;
     if ((abs(hero.getPosX() - enemy.getPosX()) > maxDistance) || (abs(hero.getPosY() - enemy.getPosY()) > maxDistance))
@@ -57,7 +44,6 @@ int Fight::receiveDamage(Character &hero, int points) {
         critic+=3;
     else
         critic++;
-
     hero.setCritic(critic);
     return points;
 }

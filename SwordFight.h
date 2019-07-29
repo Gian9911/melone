@@ -9,7 +9,7 @@
 #include "Item.h"
 
 
-class SwordFight :public Fight{
+class Sword :public Fight{
 public:
     int calculateDamage(Item &sword);
 

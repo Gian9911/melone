@@ -31,16 +31,13 @@ void  Inventory::GetElement(Item &a) {
     }
 }
 
-void Inventory::UseElement(int i){
-
-    if(vectorInv[i].getType()==3){}
-        //metodo che fa aumentare ps
-     if(vectorInv[i].getType()==2){
-         //clacola danno che fa la magia
-     }
-      if(vectorInv[i].getType()==1) {}
-      //metodo che calcola il dqnno con la spada
-
+int Inventory::UsePotion(int i) {
+    int points = 0;
+    if (vectorInv[i].getType() == 3) {
+        points = vectorInv[i].getStrenght() * 4;
+        eraseItem(i);
+    }
+return points;
 }
 
 void Inventory::eraseItem(int i){
@@ -48,6 +45,8 @@ void Inventory::eraseItem(int i){
     a.getElementNull();
     setElement(a,i);
 }
+
+
 
 Item Inventory::showElement(int i){
     Item a;

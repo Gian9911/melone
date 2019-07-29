@@ -8,9 +8,10 @@
 #include "Fight.h"
 #include "Item.h"
 
-class SpellFight:public Fight {
+class SpellFight:public Fight,public Item {
 public:
-    int claculateDamage(Item &spell);
+    SpellFight();
+    int fighting(Item &spell) override ;
 };
 
 

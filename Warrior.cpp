@@ -12,14 +12,15 @@
 
 // TODO usre strategy pattern per impostare una strategia di combattimento nulla....check
 
-Fight* Warrior::f(int i) {
-    Item a=inventory.showElement(i);
-    int b=a.getType();
-    Fight* fightt=new SwordFight();
-    if(b==2|b==1)
-       fightt=nullptr;
-    return fightt;
+Warrior::Warrior():Hero(){
+    fight=nullptr;
 }
+
+void Warrior::setFight(Fight* fightt) {
+    fight=fightt;
+
+}
+
 
 
 

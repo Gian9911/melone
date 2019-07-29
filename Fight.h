@@ -11,10 +11,7 @@
 #include <iostream>
 class Fight {
 public:
-    //gestione del combattimento
-    //calcolo danni? Sicuramente no...posso sempre creare un metodo in item
-
-    virtual bool fighting(Character &hero, Character &enemy);
+    virtual int fighting(Item& a)=0;
     virtual bool IsLegalFight(Character &hero, Character &enemy) const;
     virtual int receiveDamage(Character &hero, int points);
 };

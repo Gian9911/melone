@@ -9,15 +9,16 @@
 #include "Hero.h"
 #include "Warrior.h"
 #include "Inventory.h"
+class Fight;
 
 class Warrior : public Hero {
 public:
+    Warrior();
+    virtual void setFight(Fight* fightt);
+Item* f(int i);
 
-
-void fight1(int i, Character &enemy);
-
-FIght* f(int i);
-
+protected:
+    Fight* fight;
 };
 
 

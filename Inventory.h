@@ -16,7 +16,7 @@ public:
     Inventory();
     ~Inventory();
     void GetElement(Item &a);
-    void UseElement(int i);
+    int UsePotion(int i);
     void eraseItem(int i);
     Item showElement(int i);
     void setElement(Item &a, int i);
