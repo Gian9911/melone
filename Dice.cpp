@@ -12,22 +12,19 @@
 
 
 Dice::Dice() {
-
-     maxRoll=3;
      faces=3;
-     numRoll=0;
 }
 
-Dice::~Dice() = default;
+int Dice::smallRoll() {
+    std::srand(time(nullptr));
+    int result= rand()%(faces-1)+1;
+    return result;
+}
 
 
 
 int  Dice::roll() {
-    int result;
-
     std::srand(time(nullptr));
-    result= rand()%3+1;
-
+    int result= rand()%(faces)+1;
     return result;
-
 }

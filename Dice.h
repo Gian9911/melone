@@ -7,15 +7,10 @@ class Dice {
 public:
 
     Dice();
-    ~Dice();
+    int smallRoll();
     int roll();
-
 private:
-
-    int maxRoll;
-    int numRoll;
     int faces;
-
 };
 
 

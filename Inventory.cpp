@@ -27,7 +27,7 @@ void  Inventory::GetElement(Item &a) {
     int i=0;
     for(i=0;i<numSlot;i++){
         if( vectorInv[i].getType()==0)
-            vectorInv[i]=a;
+            setElement(a,i);
     }
 }
 
@@ -46,13 +46,42 @@ void Inventory::UseElement(int i){
 void Inventory::eraseItem(int i){
     Item a;
     a.getElementNull();
-     vectorInv[i]=a;
+    setElement(a,i);
 }
 
 Item Inventory::showElement(int i){//TODO per riferimento?
     Item a;
     a= vectorInv[i];
     return a;
+}
+
+
+void Inventory::setElement(Item &a, int i) {
+    vectorInv[i]=a;
+}
+
+const std::vector<Item> &Inventory::getVectorInv() const {
+    return vectorInv;
+}
+
+void Inventory::setVectorInv(const std::vector<Item> &vectorInv) {
+    Inventory::vectorInv = vectorInv;
+}
+
+int Inventory::getNumSlot() const {
+    return numSlot;
+}
+
+void Inventory::setNumSlot(int numSlot) {
+    Inventory::numSlot = numSlot;
+}
+
+bool Inventory::isEmpty() const {
+    return empty;
+}
+
+void Inventory::setEmpty(bool empty) {
+    Inventory::empty = empty;
 }
 
 

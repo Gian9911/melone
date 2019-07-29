@@ -16,6 +16,15 @@ using namespace std;
 
 // FIXME use initializer list
 Character::Character() {
+    Item a;
+    a.getElementNull();
+    int i;
+    int b=inventory->getNumSlot();
+
+    for(i=0;i<b;i++)
+        inventory->setElement(a,i);//TODO modifica
+
+
     HP = 10;
     armor = 0;
     posX = 0;
@@ -27,6 +36,9 @@ Character::Character() {
     MaxEsp=10;
     level=1;
     fighting=false;
+
+
+
 
 }
 
@@ -45,6 +57,7 @@ Character& Character:: operator=(const Character &other) {
         level = other.level;
         MaxLevel = other.MaxLevel;
         armor = other.armor;
+        inventory=other.inventory;
         //TODO crea un metodo privato che richiama sia operatore sia costruttotre copia SE NECESSARIO
 
 

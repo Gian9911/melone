@@ -100,6 +100,7 @@ private:
     int level;
     int MaxLevel;
     bool fighting;
+    Inventory* inventory;
 
 
 

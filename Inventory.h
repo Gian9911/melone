@@ -19,8 +19,19 @@ public:
     void UseElement(int i);
     void eraseItem(int i);
     Item showElement(int i);
+    void setElement(Item &a, int i);
 
+    const std::vector<Item> &getVectorInv() const;
 
+    void setVectorInv(const std::vector<Item> &vectorInv);
+
+    int getNumSlot() const;
+
+    void setNumSlot(int numSlot);
+
+    bool isEmpty() const;
+
+    void setEmpty(bool empty);
 
 
 private:
