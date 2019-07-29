@@ -49,7 +49,7 @@ void Inventory::eraseItem(int i){
     setElement(a,i);
 }
 
-Item Inventory::showElement(int i){//TODO per riferimento?
+Item Inventory::showElement(int i){
     Item a;
     a= vectorInv[i];
     return a;

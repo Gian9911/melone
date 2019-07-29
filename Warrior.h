@@ -16,7 +16,7 @@ public:
 
 void fight1(int i, Character &enemy);
 
-
+FIght* f(int i);
 
 };
 

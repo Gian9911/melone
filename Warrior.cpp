@@ -7,23 +7,19 @@
 #include "Inventory.h"
 #include "Chest.h"
 #include "Item.h"
+#include "Fight.h"
+#include "SwordFight.h"
 
+// TODO usre strategy pattern per impostare una strategia di combattimento nulla....check
 
-
-void Warrior::fight1(int i, Character &enemy) {
-    //pressed a value i by game of main and address enemy
-    Item a;
-    a = inventory.showElement(i);
-    if (a.getType() % 1 == 0) {
-        Warrior::fight(enemy);
-        //calculate damage with sword
-    }
+Fight* Warrior::f(int i) {
+    Item a=inventory.showElement(i);
+    int b=a.getType();
+    Fight* fightt=new SwordFight();
+    if(b==2|b==1)
+       fightt=nullptr;
+    return fightt;
 }
-
-    // TODO usre strategy pattern per impostare una strategia di combattimento nulla....check
-
-
-
 
 
 
