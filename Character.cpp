@@ -18,28 +18,33 @@ using namespace std;
 Character::Character() {
     Item a;
     a.getElementNull();
-    int i;
-    int b=inventory->getNumSlot();
+    int i=0;
+    int b=inventory.getNumSlot();
 
     for(i=0;i<b;i++)
-        inventory->setElement(a,i);//TODO modifica
+        inventory.setElement(a,i);
 
 
     HP = 10;
     armor = 0;
     posX = 0;
     posY = 0;
-    //  weapon = nullptr;
     critic = 0;
     exp = 0;
     MaxLevel = 20;
     MaxEsp=10;
     level=1;
     fighting=false;
+    sf::RectangleShape d(sf::Vector2f(100.0f,100.0f));
+    this->base=d;
 
 
 
+}
 
+sf::RectangleShape Character::realizeElement() {
+    sf::RectangleShape a(sf::Vector2f(100.0f,100.0f));
+return a;
 }
 
 Character::~Character() = default;
@@ -59,8 +64,6 @@ Character& Character:: operator=(const Character &other) {
         armor = other.armor;
         inventory=other.inventory;
         //TODO crea un metodo privato che richiama sia operatore sia costruttotre copia SE NECESSARIO
-
-
     }
     return *this;
 }
@@ -77,93 +80,50 @@ void Character::move(int x, int y) {
  //   posY += distance;
 //}
 
+//TODO rifare move
 
-
-
-bool Character::fight(Character &enemy) {// da sposare in Fight
-    fighting=true;
-    bool success = false;
-
-
-
-   // if (sword|spell)
-   //     hit = weapon->use();
-
- int damage=1;// todo damage è il valore calcolato con la spada
-
-    if (damage) {
-        cout << "You hit the enemy ! (HP: " << enemy.getHp() << " punti)" << endl;
-        success = true;
-    } else
-        cout << "You miss the hit..." << endl;
-    return success;
-}
-
-
-
-
-int Character::receiveDamage(int points) {//remove
-    if (level > 4)
-        points -= 3;
-    else if (level > 2)
-        points -= 2;
-    else if (level >= 1)
-        points -= 2;
-
-
-
-    if (points <= 0)
-        points = 1;
-
-    HP -= points;
-    if (points > 10)
-        critic+=3;
-    else
-        critic++;
-    //
-    return points;
-}
-
-
-
-bool Character::isLegalFight(const Character &enemy) const {//remove
-    int maxDistance = 1;
-    if ((abs(posX - enemy.posX) > maxDistance) || (abs(posY - enemy.posY) > maxDistance))
-        return false;
-    return true;
-}
-
-//TODO ci sono 3 move
-
-int Character::move(){//dda aggiungere texture
-    //da modificare con key pressed
-    sf::Keyboard::Key A;
-    sf::Keyboard::Key W;
-    sf::Keyboard::Key S;
-    sf::Keyboard::Key D;
-    sf::Keyboard::Key key;
-
-
-
-    if(sf::Keyboard::isKeyPressed(A)){
-        posX--;
-    }
-    else
-        if(sf::Keyboard::isKeyPressed(W)){
-            posY++;
+bool Character::move(){//dda aggiungere texture
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+            posX--;
+            base.move(-0.1f,0.0f);
         }
-        else
-            if(sf::Keyboard::isKeyPressed(S)){
+
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+            posY++;
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
                 posY--;
-            }
-            else
-                if(sf::Keyboard::isKeyPressed(D)){
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
                     posX++;
-                }
-
-
-    return (posX+posY);
+        bool moved=true;
+    return moved;
 }
+
+bool Character::move2(sf::Keyboard::Key){//dda aggiungere texture
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {
+        posX--;
+        base.move(-0.1f,0.0f);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+        posX--;
+        base.move(0.0f,-0.1f);
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+        posX--;
+        base.move(0.0f,0.1f);
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {
+        posX--;
+        base.move(0.1f,0.0f);
+    }
+
+
+    bool moved=true;
+    return moved;
+}
+
+
 
 
 //
@@ -241,3 +201,26 @@ bool Character::isFighting() const {
 void Character::setIsFighting(bool isFighting) {
     Character::fighting = isFighting;
 }
+
+void Character::setFighting(bool j) {
+    Character::fighting = j;
+}
+
+const Inventory &Character::getInventory() const {
+    return inventory;
+}
+
+void Character::setInventory(const Inventory &u) {
+    Character::inventory = u;
+}
+
+const sf::RectangleShape &Character::getBase() const {
+    return base;
+}
+
+void Character::setBase(const sf::RectangleShape &u) {
+    Character::base = u;
+}
+
+
+

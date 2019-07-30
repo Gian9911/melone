@@ -17,29 +17,18 @@ public:
    Character();//sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
 
     virtual ~Character();
+    virtual bool move2(sf::Keyboard::Key);
 
-    Character(const Character&);
-    // TODO add assignment operator ?
+    //Character(const Character&);
     Character& operator=(const Character& other);
 
     virtual void move(int x, int y);
-
-    // TODO check...void move(int distance);
 
     virtual int getHp() const;
 
     virtual void setHp(int hp);
 
-   // Weapon* getWeapon();
-
-   // void setWeapon(Weapon* weapon);
-
-
-    virtual bool fight(Character &enemy);
-
-    virtual bool isLegalFight(const Character &enemy) const;
-
-    virtual int receiveDamage(int points);
+   virtual sf::RectangleShape realizeElement();
 
     virtual int getCritic() const;
 
@@ -57,7 +46,7 @@ public:
 
     virtual void setLevel(int level);
 
-    virtual int move();
+    virtual bool move();
 
     int getPosX() const;
 
@@ -75,15 +64,17 @@ public:
 
     void setIsFighting(bool isFighting);
 
+    void setFighting(bool fighting);
 
+    const Inventory &getInventory() const;
 
+    void setInventory(const Inventory &inventory);
 
+    const sf::RectangleShape &getBase() const;
+
+    void setBase(const sf::RectangleShape &base);
 
     //animation
-
-
-
-
     //sf::IntRect uvRect;
 
    // void Update(int row, float deltaTime)
@@ -100,7 +91,8 @@ private:
     int level;
     int MaxLevel;
     bool fighting;
-    Inventory* inventory;
+    Inventory inventory;
+    sf::RectangleShape base;
 
 
 
