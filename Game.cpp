@@ -40,3 +40,28 @@ void Game::Render() {
     m_window.EndDrow();
 }
 
+
+Window* Game::GetWindow() {
+    Window* window=&m_window;
+    return window;
+}
+
+void Game::HandleInput() {
+    //non so cosa debba fare
+
+}
+
+sf::Time Game::GetElapsed() {
+    return m_elpsed;
+}
+
+void Game::RestartClock() {
+    float frametime =1.0f/60.0f;
+    if(m_elpsed.asSeconds()>=frametime){
+        m_elpsed-=sf::seconds(frametime);
+    }
+    else
+        m_elpsed+=m_clock.restart();
+
+}
+

@@ -16,6 +16,8 @@ public:
     void Update();
     void Render();
     Window* GetWindow();
+    sf::Time GetElapsed();
+    void RestartClock();
 
 
 private:
@@ -24,6 +26,8 @@ private:
     sf::Texture m_characterTexture;
     sf::Vector2i m_increment;
     sf::Sprite m_character;
+    sf::Clock m_clock;
+    sf::Time m_elpsed;
 
 
 };
