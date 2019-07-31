@@ -17,6 +17,6 @@ add_executable(melone main.cpp )
 add_subdirectory(test)
 
 set(SOURCE_FILES Character.cpp Character.h Character.cpp Character.h Dice.cpp Dice.h Inventory.h Inventory.cpp Item.cpp Item.h
-        Hero.cpp Hero.h minion.cpp minion.h Boss.h Boss.cpp Warrior.cpp Warrior.h Chest.cpp Chest.h Fight.cpp Fight.h SwordFight.cpp SwordFight.h SpellFight.cpp SpellFight.h Enemy.cpp Enemy.h ItemFactory.cpp ItemFactory.h Window.cpp Window.h Game.cpp Game.h)
+        Hero.cpp Hero.h minion.cpp minion.h Boss.h Boss.cpp Warrior.cpp Warrior.h Chest.cpp Chest.h Fight.cpp Fight.h SwordFight.cpp SwordFight.h SpellFight.cpp SpellFight.h Enemy.cpp Enemy.h ItemFactory.cpp ItemFactory.h Window.cpp Window.h Game.cpp Game.h EventType.cpp EventType.h EventManager.cpp EventManager.h)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(melone core sfml-graphics sfml-window sfml-system)
