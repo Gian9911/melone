@@ -6,7 +6,7 @@
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
 
-//#include "Weapon.h"
+
 #include<SFML/Graphics.hpp>
 #include "Inventory.h"
 
