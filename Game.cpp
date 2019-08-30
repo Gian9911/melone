@@ -2,20 +2,26 @@
 // Created by gianluca on 30/07/19.
 //
 
+#include <iostream>
 #include "Game.h"
 #include "SFML/Graphics.hpp"
 
-Game::Game():m_window("melone",sf::Vector2u(800,600)) {
+Game::Game():m_window("melone",sf::Vector2u(800,600), m_stateManager(&m_context)) {
+
 m_characterTexture.loadFromFile("magic.png");
 m_character.setTexture(m_characterTexture);
 m_increment=sf::Vector2i(4,4);
+m_window.GetEventManager().AddCallback(StateType (0),"Move", &Game::MoveSprite,this);//aggiunto statetype(0)
+m_context.m_wind = &m_window;
+m_context.m_eventManager = m_window.GetEventManager();
+m_stateManager.SwitchTo(StateType::Intro);
 }
 
 Game::~Game() =default;
 
 void Game::Update() {
     m_window.Update();
-    MoveCharacter();
+    m_stateManager.Update(m_elpsed);
 }
 
 void Game::MoveCharacter() {
@@ -36,7 +42,7 @@ void Game::MoveCharacter() {
 
 void Game::Render() {
     m_window.BeginDrow();
-    m_window.Draw(m_character);
+    m_stateManager.Draw();
     m_window.EndDrow();
 }
 
@@ -65,3 +71,13 @@ void Game::RestartClock() {
 
 }
 
+void Game::MoveSprite(EventDetails *l_details) {
+    sf::Vector2i mousepos = m_window.GetEventManager().GetMousePos(m_window.GetRenderindow());
+    m_sprite.setPosition(mousepos.x, mousepos.y);
+    std::cout<<"Moving sprite to:"<<mousepos.x<<":"<<mousepos.y<<std::endl;
+}
+
+void Game::LateUpdate() {
+    m_stateManager.ProcessRequests();
+    RestartClock();
+}

@@ -1,4 +1,4 @@
-//
+//0
 // Created by gianluca on 30/07/19.
 //
 
@@ -6,12 +6,12 @@
 #define MELONE_WINDOW_H
 
 #include <SFML/Graphics.hpp>
-
+#include "EventManager.h"
 
 class Window {
 public:
     Window();
-    Window(const std::string& title,const sf::Vector2u size);
+    Window(const std::string& title,const sf::Vector2u& size);
     ~Window();
     void BeginDrow();
     void EndDrow();
@@ -21,6 +21,15 @@ public:
     sf::Vector2u GetWindowSize();
     void ToggleFullScreen();
     void Draw(sf::Drawable& drowable);
+    bool IsFocused();
+    EventManager GetEventManager();//elimino il puntatore dal tipo della funzione
+    void ToggleFullScreen(EventDetails* l_details);//non inserisco il puntatore nell' argonemtno da far passere
+    sf::RenderWindow* GetRenderindow();
+
+
+    void Close(EventDetails* l_details = nullptr){
+        m_IsDone = true;
+    };
 
 private:
     void SetUp(const std::string& title, const sf::Vector2u& size);
@@ -31,6 +40,8 @@ private:
     std::string m_windowTitle;
     bool m_IsDone;
     bool m_IsFullScreen;
+    EventManager m_eventManager;
+    bool m_isFocused;
 };
 
 

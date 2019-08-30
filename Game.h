@@ -5,7 +5,7 @@
 #ifndef MELONE_GAME_H
 #define MELONE_GAME_H
 
-
+#include "StateManager.h"
 #include "Window.h"
 
 class Game {
@@ -18,7 +18,8 @@ public:
     Window* GetWindow();
     sf::Time GetElapsed();
     void RestartClock();
-
+    void MoveSprite(EventDetails* l_details);
+    void LateUpdate();
 
 private:
     void MoveCharacter();
@@ -28,8 +29,10 @@ private:
     sf::Sprite m_character;
     sf::Clock m_clock;
     sf::Time m_elpsed;
-
-
+    sf::Texture m_texture;
+    sf::Sprite m_sprite;
+    StateManager m_stateManager;
+    SharedContext m_context;
 };
 
 
