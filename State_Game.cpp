@@ -10,8 +10,8 @@ void State_Game::OnCreate() {
     m_sprite.setPosition(0,0);
     m_increment = sf::Vector2f(400.0f,400.0f);
     EventManager evMgr = m_stateMgr->GetContext()->m_eventManager;
-    evMgr->AddCallBack(StateType::Game,"Key_Escape", &State_Game::MainMenu, this);
-    evMgr->AddCallBack(StateType::Game,"Key_P", &State_Game::Pause, this);
+    evMgr.AddCallback(StateType::Game,"Key_Escape", &State_Game::MainMenu, this);
+    evMgr.AddCallback(StateType::Game,"Key_P", &State_Game::Pause, this);
 }
 
 void State_Game::OnDestroy() {

@@ -6,14 +6,17 @@
 #include "Game.h"
 #include "SFML/Graphics.hpp"
 
-Game::Game():m_window("melone",sf::Vector2u(800,600), m_stateManager(&m_context)) {
-
-m_characterTexture.loadFromFile("magic.png");
-m_character.setTexture(m_characterTexture);
-m_increment=sf::Vector2i(4,4);
-m_window.GetEventManager().AddCallback(StateType (0),"Move", &Game::MoveSprite,this);//aggiunto statetype(0)
+Game::Game(): m_window("Chapter 6", sf::Vector2u(800, 600)),m_stateManager(&m_context){
+m_clock.restart();
+srand(time(nullptr));
 m_context.m_wind = &m_window;
-m_context.m_eventManager = m_window.GetEventManager();
+*(m_context.m_eventManager) = m_window.GetEventManager();//controla modifica abbastana importante
+//m_characterTexture.loadFromFile("magic.png");
+//m_character.setTexture(m_characterTexture);
+//m_increment=sf::Vector2i(4,4);
+//m_window.GetEventManager().AddCallback(StateType (0),"Move", &Game::MoveSprite,this);//aggiunto statetype(0)
+//m_context.m_wind = &m_window;
+//m_context.m_eventManager = m_window.GetEventManager();
 m_stateManager.SwitchTo(StateType::Intro);
 }
 
@@ -50,11 +53,6 @@ void Game::Render() {
 Window* Game::GetWindow() {
     Window* window=&m_window;
     return window;
-}
-
-void Game::HandleInput() {
-    //non so cosa debba fare
-
 }
 
 sf::Time Game::GetElapsed() {

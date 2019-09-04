@@ -17,6 +17,6 @@ add_executable(melone main.cpp )
 add_subdirectory(test)
 
 set(SOURCE_FILES Character.cpp Character.h Character.cpp Character.h Dice.cpp Dice.h Inventory.h Inventory.cpp Item.cpp Item.h
-        Hero.cpp Hero.h minion.cpp minion.h Boss.h Boss.cpp Warrior.cpp Warrior.h Chest.cpp Chest.h Fight.cpp Fight.h SwordFight.cpp SwordFight.h SpellFight.cpp SpellFight.h Enemy.cpp Enemy.h ItemFactory.cpp ItemFactory.h Window.cpp Window.h Game.cpp Game.h EventManager.cpp EventManager.h StateManager.cpp StateManager.h BaseState.h keys.txt arial.ttf intro.png State_Intro.cpp State_Intro.h State_MainMenu.cpp State_MainMenu.h State_Game.cpp State_Game.h State_Paused.cpp State_Paused.h SharedContext.h)
+        Hero.cpp Hero.h minion.cpp minion.h Boss.h Boss.cpp Warrior.cpp Warrior.h Chest.cpp Chest.h Fight.cpp Fight.h SwordFight.cpp SwordFight.h SpellFight.cpp SpellFight.h Enemy.cpp Enemy.h ItemFactory.cpp ItemFactory.h Window.cpp Window.h Game.cpp Game.h EventManager.cpp EventManager.h StateManager.cpp StateManager.h BaseState.h keys.txt arial.ttf intro.png State_Intro.cpp State_Intro.h State_MainMenu.cpp State_MainMenu.h State_Game.cpp State_Game.h State_Paused.cpp State_Paused.h SharedContext.h ResourceManager.h Utilities.h TextureManager.h SpriteSheet.cpp SpriteSheet.h Direction.h Anim_Base.cpp Anim_Base.h)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(melone core sfml-graphics sfml-window sfml-system)

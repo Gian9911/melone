@@ -39,7 +39,6 @@ enum class EventType{
     Keyboard = sf::Event::Count + 1, Mouse, Joystick
 };
 
-
 struct EventInfo{
     EventInfo(){ m_code = 0; }
     EventInfo(int l_event){ m_code = l_event; }
@@ -54,13 +53,11 @@ struct EventDetails{
         Clear();
     }
     std::string m_name;
-
     sf::Vector2i m_size;
     sf::Uint32 m_textEntered;
     sf::Vector2i m_mouse;
     int m_mouseWheelDelta;
     int m_keyCode; // Single key code.
-
     void Clear(){
         m_size = sf::Vector2i(0, 0);
         m_textEntered = 0;
@@ -74,7 +71,7 @@ using Events = std::vector<std::pair<EventType, EventInfo>>;
 
 struct Binding{
     explicit Binding(const std::string& l_name) : m_name(l_name), m_details(l_name), c(0){}
-    ~Binding(){}
+    ~Binding()=default;
     void BindEvent(EventType l_type, EventInfo l_info = EventInfo()){
         m_events.emplace_back(l_type, l_info);
     }
