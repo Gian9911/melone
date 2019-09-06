@@ -4,6 +4,7 @@
 
 #include "SpriteSheet.h"
 #include "Direction.h"
+#include "Anim_Directional.h"
 
 SpriteSheet::SpriteSheet(TextureManager *l_textMgr) : m_textureManager(l_textMgr), m_animationCurrent(nullptr),
 m_spriteScale(1.f, 1.f), m_direction(Direction::Right){}
@@ -18,6 +19,11 @@ void SpriteSheet::ReleaseSheet() {
         m_animations.erase(m_animations.begin());
     }
 }
+
+sf::Vector2i SpriteSheet::GetSpriteSize()const{ return m_spriteSize; }
+sf::Vector2f SpriteSheet::GetSpritePosition()const{ return m_sprite.getPosition(); }
+Direction SpriteSheet::GetDirection()const{ return m_direction; }
+Anim_Base* SpriteSheet::GetCurrentAnim(){ return m_animationCurrent; }
 
 void SpriteSheet::SetSpriteSize(const sf::Vector2i &l_size) {
     m_spriteSize = l_size;
@@ -55,3 +61,64 @@ void SpriteSheet::Draw(sf::RenderWindow *l_wnd) {
     l_wnd->draw(m_sprite);
 }
 
+bool SpriteSheet::LoadSheet(const std::string &l_file) {
+    std::ifstream sheet;
+    sheet.open(Utils::GetWorkingDirectory() + l_file);
+    if (sheet.is_open()){
+        ReleaseSheet();
+        std::string line;
+        while (std::getline(sheet, line)){
+            if (line[0] == '|'){ continue; }
+            std::stringstream keystream(line);
+            std::string type;
+            if (type == "Texture"){
+                if (m_texture != ""){
+                    std::cerr << "! Duplicate texture entries in: " << l_file << std::endl;
+                    continue;
+                }
+                std::string texture;
+                keystream >> texture;
+                if(!m_textureManager->RequireResource(texture)){
+                    std::cerr << "! Could not set up the texture: " << texture << std::endl;
+                    continue;
+                }
+                m_texture = texture;
+                m_sprite.setTexture(*m_textureManager->GetResource(m_texture));
+            }else if (type == "Size"){
+                keystream >> m_spriteSize.x >> m_spriteSize.y;
+                SetSpriteSize(m_spriteSize);
+            }else if (type == "Scale"){
+                keystream >> m_spriteScale.x >> m_spriteScale.y;
+                m_sprite.setScale(m_spriteScale);
+            }else if ( type == "AnimationType"){
+                keystream >> m_animType;
+            }else if (type == "Animation"){
+                std::string name;
+                keystream >> name;
+                if (m_animations.find(name) != m_animations.end()){
+                    std::cerr << "! Duplicate Animation(" << name << ")in:" << l_file << std::endl;
+                    continue;
+                }
+                Anim_Base* anim = nullptr;
+                if (m_animType == "Directional"){
+                    anim = new Anim_Directional();
+                }else {
+                    std::cerr << "! Unknown animation trpe: " << m_animType << std::endl;
+                    continue;
+                }
+                keystream >> *anim;
+                anim->SetSpriteSheet(this);
+                anim->SetName(name);
+                anim->Reset();
+                m_animations.emplace(name, anim);
+                if (m_animationCurrent){ continue; }
+                m_animationCurrent = anim;
+                m_animationCurrent->Play();
+            }
+        }
+        sheet.close();
+        return true;
+    }
+    std::cerr <<"!Faild loading spritesheet: " << l_file << std::endl;
+    return false;
+}

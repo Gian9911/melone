@@ -12,6 +12,8 @@
 #include "Direction.h"
 #include "Anim_Base.h"
 
+using Animations = std::unordered_map<std::string,Anim_Base*>;
+
 class SpriteSheet {
 public:
     explicit SpriteSheet(TextureManager* l_textMgr);

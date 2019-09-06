@@ -7,6 +7,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "EventManager.h"
+#include <string>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
 
 struct EventDetails;
 class EventManager;
@@ -25,7 +28,7 @@ public:
     void ToggleFullScreen();
     void Draw(sf::Drawable& drowable);
     bool IsFocused();
-    EventManager GetEventManager();//elimino il puntatore dal tipo della funzione
+    EventManager* GetEventManager();//elimino il puntatore dal tipo della funzione
     void ToggleFullScreen(EventDetails* l_details);//non inserisco il puntatore nell' argonemtno da far passere
     sf::RenderWindow* GetRenderindow();
     sf::FloatRect GetViewSpace();

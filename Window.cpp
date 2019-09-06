@@ -3,6 +3,7 @@
 //
 
 #include "Window.h"
+#include "EventManager.h"
 
 
 Window::Window() {
@@ -90,8 +91,8 @@ bool Window::IsFocused() {
     return m_isFocused;
 }
 
-EventManager Window::GetEventManager() {
-    return m_eventManager;
+EventManager* Window::GetEventManager() {
+    return &m_eventManager;
 }
 
 sf::RenderWindow* Window::GetRenderindow() {

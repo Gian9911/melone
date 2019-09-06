@@ -43,3 +43,29 @@ void Anim_Base::Update(const float& l_dT) {
     CropSprite();
     m_elapsedTime = 0;
 }
+
+void Anim_Base::SetStartFrame(Frame l_frame){ m_frameStart = l_frame; }
+void Anim_Base::SetEndFrame(Frame l_frame){ m_frameEnd = l_frame; }
+void Anim_Base::SetFrameRow(Frame l_row){ m_frameRow = l_row; }
+void Anim_Base::SetActionStart(Frame l_frame){ m_frameActionStart = l_frame; }
+void Anim_Base::SetActionEnd(Frame l_frame){ m_frameActionEnd = l_frame; }
+void Anim_Base::SetFrameTime(float l_time){ m_frameTime = l_time; }
+void Anim_Base::SetLooping(bool l_loop){ m_loop = l_loop; }
+void Anim_Base::SetName(const std::string& l_name){ m_name = l_name; }
+
+SpriteSheet* Anim_Base::GetSpriteSheet(){ return m_spriteSheet; }
+Frame Anim_Base::GetFrame(){ return m_frameCurrent; }
+Frame Anim_Base::GetStartFrame(){ return m_frameStart; }
+Frame Anim_Base::GetEndFrame(){ return m_frameEnd; }
+Frame Anim_Base::GetFrameRow(){ return m_frameRow; }
+int Anim_Base::GetActionStart(){ return m_frameActionStart; }
+int Anim_Base::GetActionEnd(){ return m_frameActionEnd; }
+float Anim_Base::GetFrameTime(){ return m_frameTime; }
+float Anim_Base::GetElapsedTime(){ return m_elapsedTime; }
+std::string Anim_Base::GetName(){ return m_name; }
+bool Anim_Base::IsLooping(){ return m_loop; }
+bool Anim_Base::IsPlaying(){ return m_playing; }
+
+void Anim_Base::Play(){ m_playing = true; }
+void Anim_Base::Pause(){ m_playing = false; }
+void Anim_Base::Stop(){ m_playing = false; Reset(); }
