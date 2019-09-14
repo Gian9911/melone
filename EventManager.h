@@ -13,15 +13,14 @@
 #include <unordered_set>
 #include <SFML/Window/Event.hpp>
 #include <vector>
-#include <functional>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <bits/unordered_map.h>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include "StateManager.h"
+#include <functional>
 
 enum class EventType{
     KeyDown = sf::Event::KeyPressed,
@@ -41,7 +40,7 @@ enum class EventType{
 
 struct EventInfo{
     EventInfo(){ m_code = 0; }
-    EventInfo(int l_event){ m_code = l_event; }
+    explicit EventInfo(int l_event){ m_code = l_event; }
     union{
         int m_code;
     };

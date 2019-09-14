@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <bits/unordered_map.h>
 #include <unordered_map>
 #include "EventManager.h"
 
@@ -145,7 +144,7 @@ void EventManager::LoadBindings(){
     std::string delimiter = ":";
 
     std::ifstream bindings;
-    bindings.open("keys.");
+    bindings.open("keys");
     if (!bindings.is_open()){ std::cout << "! Failed loading keys" << std::endl; return; }
     std::string line;
     while (std::getline(bindings, line)){

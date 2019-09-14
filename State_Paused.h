@@ -11,17 +11,17 @@
 
 class State_Paused : public BaseState {
 public:
-    State_Paused(StateManager* l_stateManager);
-    ~State_Paused();
+    explicit State_Paused(StateManager* l_stateManager);
+    ~State_Paused() override;
 
-    void OnCreate();
-    void OnDestroy();
+    void OnCreate() override;
+    void OnDestroy()override ;
 
-    void Activate();
-    void Deactivate();
+    void Activate() override ;
+    void Deactivate() override;
 
-    void Update(const sf::Time& l_time);
-    void Draw();
+    void Update(const sf::Time& l_time) override;
+    void Draw() override;
 
     void Unpause(EventDetails* l_details);
 private:
@@ -29,7 +29,5 @@ private:
     sf::Text m_text;
     sf::RectangleShape m_rect;
 };
-
-
 
 #endif //MELONE_STATE_PAUSED_H

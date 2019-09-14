@@ -6,7 +6,7 @@
 #include "Game.h"
 #include "SFML/Graphics.hpp"
 
-Game::Game(): m_window("Chapter 6", sf::Vector2u(800, 600)),m_stateManager(&m_context){
+Game::Game(): m_window("melone", sf::Vector2u(800, 600)),m_stateManager(&m_context){
 m_clock.restart();
 srand(time(nullptr));
 m_context.m_wind = &m_window;
@@ -70,7 +70,7 @@ void Game::RestartClock() {
 }
 
 void Game::MoveSprite(EventDetails *l_details) {
-    sf::Vector2i mousepos = m_window.GetEventManager()->GetMousePos(m_window.GetRenderindow());
+    sf::Vector2i mousepos = m_window.GetEventManager()->GetMousePos(m_window.GetRenderWindow());
     m_sprite.setPosition(mousepos.x, mousepos.y);
     std::cout<<"Moving sprite to:"<<mousepos.x<<":"<<mousepos.y<<std::endl;
 }

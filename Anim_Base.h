@@ -17,6 +17,7 @@ class Anim_Base {
 
 public:
     Anim_Base();
+    virtual  ~Anim_Base();
 
     void SetSpriteSheet(SpriteSheet* l_sheet);
     void SetFrame(Frame l_frame);

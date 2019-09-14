@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MELONE_MAP_H
+#define MELONE_MAP_H
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 #include <map>
@@ -15,7 +16,7 @@ enum Sheet{ Tile_Size = 32, Sheet_Width = 256, Sheet_Height = 256 };
 using TileID = unsigned int;
 
 struct TileInfo{
-	TileInfo(SharedContext* l_context, 
+	explicit TileInfo(SharedContext* l_context,
 		const std::string& l_texture = "", TileID l_id = 0)
 		: m_context(l_context), m_id(0), m_deadly(false)
 	{
@@ -96,3 +97,4 @@ private:
 	BaseState* m_currentState;
 	SharedContext* m_context;
 };
+#endif

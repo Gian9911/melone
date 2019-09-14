@@ -27,7 +27,7 @@ Anim_Base* SpriteSheet::GetCurrentAnim(){ return m_animationCurrent; }
 
 void SpriteSheet::SetSpriteSize(const sf::Vector2i &l_size) {
     m_spriteSize = l_size;
-    m_sprite.setOrigin(m_spriteSize.x/2, m_spriteSize.y);
+    m_sprite.setOrigin(m_spriteSize.x/2.f, m_spriteSize.y);
 }
 
 void SpriteSheet::SetSpritePosition(const sf::Vector2f &l_pos) {

@@ -12,8 +12,9 @@
 class Fight {
 public:
     virtual int fighting(Item& a)=0;
-    virtual bool IsLegalFight(Character &hero, Character &enemy) const;
-    virtual int receiveDamage(Character &hero, int points);
+    virtual ~Fight();
+    virtual bool IsLegalFight(Character &hero, Character &enemy) const = 0;
+    virtual int receiveDamage(Character &hero, int points)=0;
 };
 
 

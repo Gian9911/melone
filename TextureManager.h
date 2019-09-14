@@ -12,7 +12,7 @@
 class TextureManager: public ResourceManager<TextureManager, sf::Texture> {
 public:
     TextureManager():ResourceManager("../Resources/textures.cfg"){}
-    sf::Texture* Load(const std::string& l_path){
+    sf::Texture* Load1(const std::string& l_path)  {//TODO controlla nome
         sf::Texture* texture = new sf::Texture();
         if (!texture->loadFromFile(Utils::GetWorkingDirectory() + l_path)){
             delete texture;

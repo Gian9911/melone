@@ -6,10 +6,10 @@
 #define MELONE_WINDOW_H
 
 #include <SFML/Graphics.hpp>
-#include "EventManager.h"
 #include <string>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <functional>
 
 struct EventDetails;
 class EventManager;
@@ -30,7 +30,7 @@ public:
     bool IsFocused();
     EventManager* GetEventManager();//elimino il puntatore dal tipo della funzione
     void ToggleFullScreen(EventDetails* l_details);//non inserisco il puntatore nell' argonemtno da far passere
-    sf::RenderWindow* GetRenderindow();
+    sf::RenderWindow* GetRenderWindow();
     sf::FloatRect GetViewSpace();
     void Close(EventDetails* l_details = nullptr){
         m_IsDone = true;
@@ -46,7 +46,7 @@ private:
     bool m_IsDone;
     bool m_IsFullScreen;
     bool m_isFocused;
-    EventManager m_eventManager;
+    EventManager* m_eventManager;
 };
 
 

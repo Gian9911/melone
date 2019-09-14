@@ -35,7 +35,7 @@ void StateManager::Draw() {
            --itr;
        }
        for (; itr != m_states.end(); ++itr){
-           m_shared->m_wind->GetRenderindow()->setView(itr->second->GetView());
+           m_shared->m_wind->GetRenderWindow()->setView(itr->second->GetView());
            itr->second->Draw();
        }
    }else{
@@ -97,21 +97,21 @@ void StateManager::SwitchTo(const StateType &l_type) {
             m_states.erase(itr);
             m_states.emplace_back(tmp_type, tmp_state);
             tmp_state->Activate();
-            m_shared->m_wind->GetRenderindow()->setView(tmp_state->GetView());
+            m_shared->m_wind->GetRenderWindow()->setView(tmp_state->GetView());
             return;
         }
     }
     if(!m_states.empty()){ m_states.back().second->Deactivate(); }
     CreateState(l_type);
     m_states.back().second->Activate();
-    m_shared->m_wind->GetRenderindow()->setView(m_states.back().second->GetView());
+    m_shared->m_wind->GetRenderWindow()->setView(m_states.back().second->GetView());
 }
 
 void StateManager::CreateState(const StateType &l_type) {
     auto newState = m_stateFactory.find(l_type);
     if( newState == m_stateFactory.end()){ return ; }
     BaseState* state = newState->second();
-    state->m_view = m_shared->m_wind->GetRenderindow()->getDefaultView();
+    state->m_view = m_shared->m_wind->GetRenderWindow()->getDefaultView();
     m_states.emplace_back(l_type, state);
     state->OnCreate();
 }

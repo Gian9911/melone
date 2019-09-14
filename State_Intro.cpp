@@ -4,11 +4,15 @@
 
 #include "State_Intro.h"
 #include "StateManager.h"
-State_Intro::State_Intro(StateManager* l_stateManager): BaseState(l_stateManager){}
+State_Intro::State_Intro(StateManager* l_stateManager): BaseState(l_stateManager){
+    m_timePassed=0;
+}
+
+State_Intro::~State_Intro()=default;
 
 void State_Intro::OnCreate() {
     m_timePassed = 0.0f;
-    sf::Vector2u windowSize = m_stateMgr->GetContext()->m_wind->GetRenderindow()->getSize();
+    sf::Vector2u windowSize = m_stateMgr->GetContext()->m_wind->GetRenderWindow()->getSize();
     m_introTexture.loadFromFile("intro.png");
     m_introSprite.setTexture(m_introTexture);
     m_introSprite.setOrigin(m_introTexture.getSize().x/2.0f, m_introTexture.getSize().y /2.0f);
@@ -37,7 +41,7 @@ void State_Intro::Update(const sf::Time &l_time) {
 }
 
 void State_Intro::Draw() {
-    sf::RenderWindow* window = m_stateMgr->GetContext()->m_wind->GetRenderindow();
+    sf::RenderWindow* window = m_stateMgr->GetContext()->m_wind->GetRenderWindow();
     window->draw(m_introSprite);
     if(m_timePassed >= 5.0f){
         window->draw(m_text);
@@ -53,5 +57,3 @@ void State_Intro::Continue(EventDetails *l_details) {
 
 void State_Intro::Activate() {}
 void State_Intro::Deactivate() {}
-
-

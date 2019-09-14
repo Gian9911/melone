@@ -12,6 +12,10 @@
 #include "DebugOverlay.h"
 
 class Map;
+class Window;
+class EventManager;
+class EntityManager;
+class TextureManager;
 struct SharedContext{
     SharedContext():
             m_wind(nullptr),
